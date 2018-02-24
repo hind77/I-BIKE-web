@@ -9,9 +9,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$response["code"] = 404;
 	$response["error"] = "Somthing went wrong in the server";
 
-	$qr = "SELECT id_bin, lat, name, fill_level, lng, 
+	$qr = "SELECT id_bike, lat, name, state, lng, 
 	( 6371 * acos( cos( radians(".$_POST['lat'].") ) * cos( radians( lat ) ) * cos( radians( lng ) - radians(".$_POST['lng'].") ) + sin( radians(".$_POST['lat'].") ) * sin( radians( lat ) ) ) ) AS distance 
-	FROM bins 
+	FROM bikes 
 	HAVING distance < 1 
 	ORDER BY distance 
 	LIMIT 0 , 20;";
