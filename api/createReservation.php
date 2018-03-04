@@ -12,6 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	if ($query) {
 		$response["code"] = 200;
+		$query = $db->query("UPDATE `bikes` SET `state`= '1' WHERE id_bike = ".$_POST['id_bike']);
 	}else{
 		$response["code"] = 300;
 		$response["error"] = "Something went wrong";
