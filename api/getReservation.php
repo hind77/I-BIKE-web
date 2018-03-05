@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$response["code"] = 404;
 	$response["error"] = "Somthing went wrong in the server";
 
-	$qr = "SELECT bikes.id_bike as id, bikes.name as name, reserve.duration as duration, reserve.booking_time as timestamp
+	$qr = "SELECT reserve.id as id_reserve, bikes.id_bike as id, bikes.name as name, reserve.duration as duration, reserve.booking_time as timestamp
 			FROM bikes, users, reserve
 			WHERE bikes.id_bike = reserve.id_bike AND users.id_user = reserve.id_user
 			AND users.id_user = ".$_POST['id_user'];
