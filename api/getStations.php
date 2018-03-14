@@ -12,9 +12,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$qr = "SELECT id_station, lat, name, lng, num_bikes,
 	( 6371 * acos( cos( radians(".$_POST['lat'].") ) * cos( radians( lat ) ) * cos( radians( lng ) - radians(".$_POST['lng'].") ) + sin( radians(".$_POST['lat'].") ) * sin( radians( lat ) ) ) ) AS distance 
 	FROM stations
-	HAVING distance < 1 
+	
 	ORDER BY distance 
-	LIMIT 0 , 20;";
+	LIMIT 1;";
 
 	$query = $db->query($qr);
 
